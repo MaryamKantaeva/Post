@@ -1,7 +1,7 @@
-const searchText = window.location.search.substring(8).replaceAll('%20', ' ').toUpperCase()
+const searchTextPosts = window.location.search.substring(8).replaceAll('%20', ' ').toLowerCase()
 const searchContainerPosts = document.querySelector('.search-containerPosts')
 
-fetch(`https://jsonplaceholder.typicode.com/posts?title=${searchText}`)
+fetch(`https://jsonplaceholder.typicode.com/posts?title=${searchTextPosts}`)
 .then((res) => res.json()).then((res) => renderResultPosts(res))
 
 const renderResultPosts = (posts) => {
@@ -27,9 +27,10 @@ const renderResultPosts = (posts) => {
     }
 }
 
+const searchTextUsers = window.location.search.substring(8)
 const searchContainerUsers = document.querySelector('.search-containerUsers')
 
-fetch(`https://jsonplaceholder.typicode.com/users?username=${searchText}`)
+fetch(`https://jsonplaceholder.typicode.com/users?username=${searchTextUsers}`)
 .then((res) => res.json()).then((res) => renderResultUsers(res))
 
 const renderResultUsers = (users) => {
